@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>EMF 2014 - maps</title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="./js/proj4js-compressed.js"></script>
+    <script src="./js/OpenLayers.js"></script>
+    <style type="text/css">
+     html {
+        width: 100%;
+        height: 100%;
+        font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+     }
+     body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+     }
+     #map {
+        width: 100%;
+        height: 100%;
+     }
+    </style>
+    <script type="text/javascript">
+        Proj4js.defs["EPSG:27700"] = "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +datum=OSGB36 +units=m +no_defs";
+        var map;
+        $(function(){
+            OpenLayers.DOTS_PER_INCH = 90.7142367;
+            map = new OpenLayers.Map('map',
+              {projection: "EPSG:27700" ,
+                resolutions: [2800,1400,700,350,175,84,42,21,11.2,5.6,2.8,1.4,0.7,0.35,0.14,0.07],
+                maxExtent: new OpenLayers.Bounds(0, 0, 700000, 1300000),
+               units: 'm',
+               controls: [
+                        new OpenLayers.Control.Navigation(),
+                        new OpenLayers.Control.PanZoomBar(),
+                        new OpenLayers.Control.LayerSwitcher({'ascending':false}),
+                        new OpenLayers.Control.Permalink(),
+                        new OpenLayers.Control.ScaleLine(),
+                        new OpenLayers.Control.Permalink('permalink'),
+                        new OpenLayers.Control.MousePosition(),
+                        new OpenLayers.Control.KeyboardDefaults()
+                      ]
+            });
+
+
+            layer = new OpenLayers.Layer.TMS( "OpenStreetMap GB",
+                    "http://www.osmgb.org.uk/ogc/tms27700/", {layername: "OSM-GB:__all__", transitionEffect: "resize", type:'png'} );
+            layer.setOpacity(0.4);
+            map.addLayer(layer);
+            $.getScript('layers.js')
+
+            map.setCenter(new OpenLayers.LonLat(483050, 230550), 12);
+        });
+    </script>
+    </head>
+    <body>
+      <div id="map"></div>
+    </body>
+</html>
