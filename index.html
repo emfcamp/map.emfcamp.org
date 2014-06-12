@@ -29,6 +29,7 @@
         var map;
         $(function(){
             OpenLayers.DOTS_PER_INCH = 90.7142367;
+            OpenLayers.Util.onImageLoadErrorColor = 'transparent';
             map = new OpenLayers.Map('map',
               {projection: "EPSG:27700" ,
                 resolutions: [2800,1400,700,350,175,84,42,21,11.2,5.6,2.8,1.4,0.7,0.35,0.14,0.07],
