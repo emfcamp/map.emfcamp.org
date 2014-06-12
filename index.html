@@ -6,8 +6,8 @@
     <title>EMF 2014 - maps</title>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="./js/proj4js-compressed.js"></script>
-    <script src="./js/OpenLayers.js"></script>
+    <script src="./openlayers/proj4js-compressed.js"></script>
+    <script src="./openlayers/OpenLayers.js"></script>
     <style type="text/css">
      html {
         width: 100%;
@@ -40,6 +40,7 @@
                         new OpenLayers.Control.LayerSwitcher({'ascending':false}),
                         new OpenLayers.Control.Permalink(),
                         new OpenLayers.Control.ScaleLine(),
+                        new OpenLayers.Control.Attribution(),
                         new OpenLayers.Control.Permalink('permalink'),
                         new OpenLayers.Control.MousePosition(),
                         new OpenLayers.Control.KeyboardDefaults()
@@ -48,7 +49,9 @@
 
 
             layer = new OpenLayers.Layer.TMS( "OpenStreetMap GB",
-                    "http://www.osmgb.org.uk/ogc/tms27700/", {layername: "OSM-GB:__all__", transitionEffect: "resize", type:'png'} );
+                    "http://www.osmgb.org.uk/ogc/tms27700/",
+                    {layername: "OSM-GB:__all__", transitionEffect: "resize", type:'png',
+                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'} );
             layer.setOpacity(0.4);
             map.addLayer(layer);
             $.getScript('layers.js')
