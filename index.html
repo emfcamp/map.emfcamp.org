@@ -56,8 +56,12 @@
             layer.setOpacity(0.4);
             map.addLayer(layer);
             $.getScript('layers.js')
-
-            map.setCenter(new OpenLayers.LonLat(483050, 230550), 12);
+            if (args.lat && args.lon && args.zoom) {
+              var position = new OpenLayers.LonLat(parseFloat(args.lon), parseFloat(args.lat));
+              map.setCenter(position, parseFloat(args.zoom));
+            } else {
+              map.setCenter(new OpenLayers.LonLat(483050, 230550), 12);
+            }
         });
     </script>
     </head>
