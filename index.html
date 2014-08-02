@@ -54,15 +54,14 @@
                       ]
             });
 
-            layer = new OpenLayers.Layer.OSM("OSM base map", null, {
-                resolutions: all_resolutions,
-                serverResolutions: osm_resolutions,
-                transitionEffect: 'resize',
-                url: [
-                       '//a.tile.openstreetmap.org/${z}/${x}/${y}.png',
-                       '//b.tile.openstreetmap.org/${z}/${x}/${y}.png',
-                       '//c.tile.openstreetmap.org/${z}/${x}/${y}.png'
-                   ],
+            layer = new OpenLayers.Layer.OSM("OSM base map", [
+                  '//a.tile.openstreetmap.org/${z}/${x}/${y}.png',
+                  '//b.tile.openstreetmap.org/${z}/${x}/${y}.png',
+                  '//c.tile.openstreetmap.org/${z}/${x}/${y}.png'
+                ], {
+                  resolutions: all_resolutions,
+                  serverResolutions: osm_resolutions,
+                  transitionEffect: 'resize'
                 });
             layer.setOpacity(0.4);
             map.addLayer(layer);
