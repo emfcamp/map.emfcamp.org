@@ -25,21 +25,27 @@
      }
     </style>
     <script type="text/javascript">
-        Proj4js.defs["EPSG:27700"] = "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +datum=OSGB36 +units=m +no_defs";
+        Proj4js.defs["EPSG:3857"] = "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs";
+        var osm_resolutions = [156543.03390625, 78271.516953125, 39135.7584765625,
+                      19567.87923828125, 9783.939619140625, 4891.9698095703125,
+                      2445.9849047851562, 1222.9924523925781, 611.4962261962891,
+                      305.74811309814453, 152.87405654907226, 76.43702827453613,
+                      38.218514137268066, 19.109257068634033, 9.554628534317017,
+                      4.777314267158508, 2.388657133579254, 1.194328566789627,
+                      0.5971642833948135];
+        var all_resolutions = osm_resolutions.concat(0.25)
         var map;
         $(function(){
             OpenLayers.DOTS_PER_INCH = 90.7142367;
             OpenLayers.Util.onImageLoadErrorColor = 'transparent';
             map = new OpenLayers.Map('map',
-              {projection: "EPSG:27700" ,
-                resolutions: [2800,1400,700,350,175,84,42,21,11.2,5.6,2.8,1.4,0.7,0.35,0.14,0.07],
-                maxExtent: new OpenLayers.Bounds(0, 0, 700000, 1300000),
+              {projection: "EPSG:3857" ,
+                resolutions: all_resolutions,
                units: 'm',
                controls: [
                         new OpenLayers.Control.Navigation(),
                         new OpenLayers.Control.PanZoomBar(),
                         new OpenLayers.Control.LayerSwitcher({'ascending':false}),
-                        new OpenLayers.Control.Permalink(),
                         new OpenLayers.Control.ScaleLine(),
                         new OpenLayers.Control.Attribution(),
                         new OpenLayers.Control.Permalink('permalink'),
@@ -48,20 +54,16 @@
                       ]
             });
 
-
-            layer = new OpenLayers.Layer.TMS( "OpenStreetMap GB",
-                    "http://www.osmgb.org.uk/ogc/tms27700/",
-                    {layername: "OSM-GB:__all__", transitionEffect: "resize", type:'png',
-                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'} );
+            layer = new OpenLayers.Layer.OSM("OSM base map", null, {
+                resolutions: all_resolutions,
+                serverResolutions: osm_resolutions,
+                transitionEffect: 'resize'
+                });
             layer.setOpacity(0.4);
             map.addLayer(layer);
             $.getScript('layers.js')
-            if (args.lat && args.lon && args.zoom) {
-              var position = new OpenLayers.LonLat(parseFloat(args.lon), parseFloat(args.lat));
-              map.setCenter(position, parseFloat(args.zoom));
-            } else {
-              map.setCenter(new OpenLayers.LonLat(483050, 230550), 12);
-            }
+
+            map.setCenter(new OpenLayers.LonLat(-88370, 6794160), 16);
         });
     </script>
     </head>
