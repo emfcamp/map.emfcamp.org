@@ -63,17 +63,21 @@
                   serverResolutions: osm_resolutions,
                   transitionEffect: 'resize'
                 });
-            base_layer.setOpacity(0.4);
-            map.addLayer(base_layer);
-            $.getScript('layers.js')
 
-            map.events.register('zoomend', map, function() {
-                  if (map.getZoom() < 14) {
-                    base_layer.setOpacity(1);
-                  } else {
-                    base_layer.setOpacity(0.4);
-                  }
-            })
+
+            map.addLayer(base_layer);
+            $.getScript('layers.js');
+
+            function setOpacity() {
+              if (map.getZoom() < 14) {
+                base_layer.setOpacity(1);
+              } else {
+                base_layer.setOpacity(0.4);
+              }
+            }
+
+            map.events.register('zoomend', map, setOpacity);
+            setOpacity();
 
             var center = new OpenLayers.LonLat(-88370, 6794160);
             var markers = new OpenLayers.Layer.Markers("Marker", {
@@ -88,7 +92,9 @@
             var icon = new OpenLayers.Icon('pin.png', size, offset);
             markers.addMarker(new OpenLayers.Marker(center, icon));
 
-            map.setCenter(center, 16);
+            if (!map.getCenter()) {
+              map.setCenter(center, 16);
+            }
         });
     </script>
     </head>
