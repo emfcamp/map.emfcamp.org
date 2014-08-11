@@ -54,7 +54,7 @@
                       ]
             });
 
-            layer = new OpenLayers.Layer.OSM("OSM base map", [
+            base_layer = new OpenLayers.Layer.OSM("OSM base map", [
                   '//a.tile.openstreetmap.org/${z}/${x}/${y}.png',
                   '//b.tile.openstreetmap.org/${z}/${x}/${y}.png',
                   '//c.tile.openstreetmap.org/${z}/${x}/${y}.png'
@@ -63,11 +63,32 @@
                   serverResolutions: osm_resolutions,
                   transitionEffect: 'resize'
                 });
-            layer.setOpacity(0.4);
-            map.addLayer(layer);
+            base_layer.setOpacity(0.4);
+            map.addLayer(base_layer);
             $.getScript('layers.js')
 
-            map.setCenter(new OpenLayers.LonLat(-88370, 6794160), 16);
+            map.events.register('zoomend', map, function() {
+                  if (map.getZoom() < 14) {
+                    base_layer.setOpacity(1);
+                  } else {
+                    base_layer.setOpacity(0.4);
+                  }
+            })
+
+            var center = new OpenLayers.LonLat(-88370, 6794160);
+            var markers = new OpenLayers.Layer.Markers("Marker", {
+                'minZoomLevel': 1, 'maxZoomLevel': 13,
+                'displayInLayerSwitcher':false
+                });
+
+
+            map.addLayer(markers);
+            var size = new OpenLayers.Size(50, 50);
+            var offset = new OpenLayers.Pixel(-size.w/2, -size.h/2);
+            var icon = new OpenLayers.Icon('pin.png', size, offset);
+            markers.addMarker(new OpenLayers.Marker(center, icon));
+
+            map.setCenter(center, 16);
         });
     </script>
     </head>
