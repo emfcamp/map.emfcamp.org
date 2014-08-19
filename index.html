@@ -39,7 +39,8 @@
             OpenLayers.DOTS_PER_INCH = 90.7142367;
             OpenLayers.Util.onImageLoadErrorColor = 'transparent';
             map = new OpenLayers.Map('map',
-              {projection: "EPSG:3857" ,
+              {projection: "EPSG:3857",
+               displayProjection: new OpenLayers.Projection("EPSG:4326"),
                 resolutions: all_resolutions,
                units: 'm',
                controls: [
