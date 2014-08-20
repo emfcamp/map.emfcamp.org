@@ -34,13 +34,15 @@
                       4.777314267158508, 2.388657133579254, 1.194328566789627,
                       0.5971642833948135];
         var all_resolutions = osm_resolutions.concat(0.25)
+        var wgs = new OpenLayers.Projection("EPSG:4326")
+        var web_mercator = new OpenLayers.Projection("EPSG:3857")
         var map;
         $(function(){
             OpenLayers.DOTS_PER_INCH = 90.7142367;
             OpenLayers.Util.onImageLoadErrorColor = 'transparent';
             map = new OpenLayers.Map('map',
               {projection: "EPSG:3857",
-               displayProjection: new OpenLayers.Projection("EPSG:4326"),
+               displayProjection: wgs,
                 resolutions: all_resolutions,
                units: 'm',
                controls: [
@@ -65,9 +67,10 @@
                   transitionEffect: 'resize'
                 });
 
-
             map.addLayer(base_layer);
+
             $.getScript('layers.js');
+
 
             function setOpacity() {
               if (map.getZoom() < 14) {
@@ -92,6 +95,53 @@
             var offset = new OpenLayers.Pixel(-size.w/2, -size.h/2);
             var icon = new OpenLayers.Icon('pin.png', size, offset);
             markers.addMarker(new OpenLayers.Marker(center, icon));
+
+            villagesLayer = new OpenLayers.Layer.Markers("Villages (Wiki)");
+           $.getJSON("/villages.php", function(data) {
+                villages = data["results"];
+                for (key in villages) {
+                    (function(){
+                        village = villages[key]
+                        var name = village["fulltext"].substr(9);
+                        var url = village["fullurl"];
+                        if (village["printouts"]["Village Location"].length == 0) {
+                          return;
+                        }
+                        lat = village["printouts"]["Village Location"][0]["lat"];
+                        lon = village["printouts"]["Village Location"][0]["lon"];
+                        var coordinate = new OpenLayers.LonLat(lon, lat);
+                        var description = village["printouts"]["Village Description"][0];
+                        coordinate.transform(wgs, web_mercator);
+                        size = new OpenLayers.Size(21,25);
+                        offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+                        icon = new OpenLayers.Icon("pin.png", size, offset);
+                        marker = new OpenLayers.Marker(coordinate, icon);
+                        marker.events.register('mousedown', marker, function (event) {
+                            a = jQuery("<a/>");
+                            a.attr("href", url);
+                            a.text(name);
+                            b = jQuery("<b/>");
+                            a.appendTo(b);
+                            p = jQuery("<p>");
+                            p.text(description);
+                            div = jQuery("<div/>");
+                            b.appendTo(div);
+                            p.appendTo(div);
+                            popup = new OpenLayers.Popup.FramedCloud(event.id, coordinate,
+                                    null, div.html(), icon, true);
+                            popup.autoSize = false;
+                            map.addPopup(popup, true);
+                            OpenLayers.Event.stop(event);
+                        });
+                        villagesLayer.addMarker(marker);
+                    })();
+                }
+            });
+
+
+            map.addLayer(villagesLayer);
+            villagesLayer.setZIndex(500);
+
 
             if (!map.getCenter()) {
               map.setCenter(center, 16);
