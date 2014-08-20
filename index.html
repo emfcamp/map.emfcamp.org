@@ -112,9 +112,13 @@
                         var coordinate = new OpenLayers.LonLat(lon, lat);
                         var description = village["printouts"]["Village Description"][0];
                         coordinate.transform(wgs, web_mercator);
-                        size = new OpenLayers.Size(21,25);
+                        size = new OpenLayers.Size(20,20);
                         offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-                        icon = new OpenLayers.Icon("pin.png", size, offset);
+                        if (village["printouts"]["Image"].length > 0) {
+                          icon = new OpenLayers.Icon(village["printouts"]["Image"][0], size, offset);
+                        } else {
+                          icon = new OpenLayers.Icon("pin.png", size, offset);
+                        }
                         marker = new OpenLayers.Marker(coordinate, icon);
                         marker.events.register('mousedown', marker, function (event) {
                             a = jQuery("<a/>");
