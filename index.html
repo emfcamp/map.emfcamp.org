@@ -42,7 +42,7 @@
             OpenLayers.Util.onImageLoadErrorColor = 'transparent';
             map = new OpenLayers.Map('map',
               {projection: "EPSG:3857",
-               displayProjection: wgs,
+               displayProjection: web_mercator,
                 resolutions: all_resolutions,
                units: 'm',
                controls: [
@@ -83,7 +83,7 @@
             map.events.register('zoomend', map, setOpacity);
             setOpacity();
 
-            var center = new OpenLayers.LonLat(-88370, 6794160);
+            var center = new OpenLayers.LonLat(-67685, 6659062);
             var markers = new OpenLayers.Layer.Markers("Marker", {
                 'minZoomLevel': 1, 'maxZoomLevel': 13,
                 'displayInLayerSwitcher':false
