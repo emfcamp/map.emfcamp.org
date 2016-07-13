@@ -6,10 +6,11 @@ var osm_resolutions = [156543.03390625, 78271.516953125, 39135.7584765625,
               38.218514137268066, 19.109257068634033, 9.554628534317017,
               4.777314267158508, 2.388657133579254, 1.194328566789627,
               0.5971642833948135];
+var all_resolutions = osm_resolutions.concat(0.25).concat(0.125)
 
 var center = new OpenLayers.LonLat(-67685, 6659062);
+var map_bounds = new OpenLayers.Bounds([-68900, 6657782, -65924, 6660310]);
 
-var all_resolutions = osm_resolutions.concat(0.25).concat(0.125)
 var wgs = new OpenLayers.Projection("EPSG:4326")
 var web_mercator = new OpenLayers.Projection("EPSG:3857")
 var map;
@@ -49,7 +50,7 @@ $(function(){
 
 
     function setOpacity() {
-      if (map.getZoom() < 14) {
+      if (map.getZoom() < 14 || !map_bounds.containsLonLat(map.getCenter())) {
         base_layer.setOpacity(1);
       } else {
         base_layer.setOpacity(0.1);
@@ -57,6 +58,7 @@ $(function(){
     }
 
     map.events.register('zoomend', map, setOpacity);
+    map.events.register('moveend', map, setOpacity);
     setOpacity();
 
     var markers = new OpenLayers.Layer.Markers("Marker", {
