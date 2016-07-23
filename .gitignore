@@ -1,4 +1,6 @@
-tiles/
-layers.def
-layers.js
-tiles-*/
+config.json
+csv
+csv-old
+kml
+kml-old
+export.html
