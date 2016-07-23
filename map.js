@@ -12,7 +12,7 @@ function initMap() {
     var siteIcon = L.icon({iconUrl: 'pin.png', iconSize: [50, 50]});
 
     var baseMaps = { 'OpenStreetMap':
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         opacity: 0.3,
         maxZoom: config.zoom_range[1],
         maxNativeZoom: 18,
