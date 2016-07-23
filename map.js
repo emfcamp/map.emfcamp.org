@@ -32,12 +32,11 @@ function initMap() {
     });
 
     map = L.map('map', {
-        zoom: 16,
-        layers: [baseMaps['OpenStreetMap'], overlayMaps['base']]
+        zoom: 17,
+        center: bounds.getCenter(),
+        layers: [baseMaps['OpenStreetMap'], overlayMaps['base']],
     });
-
-
-    map.setView(bounds.getCenter(), 18);
+    new L.Hash(map);
     L.control.layers(baseMaps, overlayMaps).addTo(map);
     L.control.scale({maxWidth: 200}).addTo(map);
 
