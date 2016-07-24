@@ -33,7 +33,7 @@ function initMap() {
 
     map = L.map('map', {
         zoom: 17,
-        center: bounds.getCenter(),
+        center: [51.21265, -0.60727],
         layers: [baseMaps['OpenStreetMap'], overlayMaps['base']],
     });
     new L.Hash(map);
@@ -56,7 +56,7 @@ function initMap() {
     map.on('locationerror', function(e) {
         if (locationMarker != null) {
             locationMarker.remove();
-            locationMarker == null;
+            locationMarker = null;
         }
     });
 
