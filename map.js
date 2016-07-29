@@ -82,15 +82,14 @@ function initMap() {
 }
 
 function addVillages(data) {
-    let layer = L.featureGroup([]);
-    let villages = data['results'];
+    var layer = L.featureGroup([]);
+    var villages = data['results'];
     for (name in villages) {
         (function(){
             village = villages[name];
             if (village["printouts"]["Village Location"].length == 0) {
                 return;
             }
-            console.log(village);
             var icon;
             if (village["printouts"]["Image"].length > 0) {
                 icon = L.icon({
@@ -105,7 +104,7 @@ function addVillages(data) {
                     iconAnchor: [10, 10]
                 })
             }
-            let marker = L.marker([village["printouts"]["Village Location"][0]["lat"],
+            var marker = L.marker([village["printouts"]["Village Location"][0]["lat"],
                                    village["printouts"]["Village Location"][0]["lon"]], {icon: icon}).addTo(layer);
 
             a = jQuery("<a/>");
