@@ -1,5 +1,6 @@
 var config;
 var map;
+var layerSwitcher = null;
 var siteMarker = null;
 var locationMarker = null;
 var lastLocation = null;
@@ -37,7 +38,7 @@ function initMap() {
         layers: [baseMaps['OpenStreetMap'], overlayMaps['base']],
     });
     new L.Hash(map);
-    L.control.layers(baseMaps, overlayMaps).addTo(map);
+    layerSwitcher = L.control.layers(baseMaps, overlayMaps).addTo(map);
     L.control.scale({maxWidth: 200}).addTo(map);
 
     map.on('locationfound', function(e) {
@@ -76,6 +77,49 @@ function initMap() {
         }
     });
     map.locate({enableHighAccuracy: true, watch: true})
+
+    $.getJSON('https://wiki.emfcamp.org/villages.php', addVillages);
+}
+
+function addVillages(data) {
+    let layer = L.featureGroup([]);
+    let villages = data['results'];
+    for (name in villages) {
+        (function(){
+            village = villages[name];
+            if (village["printouts"]["Village Location"].length == 0) {
+                return;
+            }
+            console.log(village);
+            var icon;
+            if (village["printouts"]["Image"].length > 0) {
+                icon = L.icon({
+                    iconUrl: village["printouts"]["Image"][0],
+                    iconSize: [21 ,21],
+                    iconAnchor: [10, 10]
+                })
+            } else {
+                icon = L.icon({
+                    iconUrl: 'pin.png',
+                    iconSize: [21 ,21],
+                    iconAnchor: [10, 10]
+                })
+            }
+            let marker = L.marker([village["printouts"]["Village Location"][0]["lat"],
+                                   village["printouts"]["Village Location"][0]["lon"]], {icon: icon}).addTo(layer);
+
+            a = jQuery("<a/>");
+            a.attr("href", village["fullurl"]);
+            a.text(village["fulltext"]);
+            b = jQuery("<b/>");
+            a.appendTo(b);
+            p = jQuery("<p>");
+            p.text(village["printouts"]["Village Description"][0]);
+            marker.bindPopup(b.html() + "<br/>" + p.html());
+        })();
+    };
+    layerSwitcher.addOverlay(layer, 'Villages');
+    layer.addTo(map);
 }
 
 function updateLocationMarker() {
