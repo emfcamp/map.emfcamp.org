@@ -79,6 +79,44 @@ function initMap() {
     map.locate({enableHighAccuracy: true, watch: true})
 
     $.getJSON('https://wiki.emfcamp.org/villages.php', addVillages);
+
+    var target = parseTarget(location.search);
+    if (target) {
+        var latlng = target[0];
+        var title = target[1];
+        var popup = L.marker(latlng).addTo(map);
+        if (title != null) {
+            popup.bindPopup(title);
+        }
+        popup.openPopup();
+    }
+
+}
+
+function parseTarget(qs) {
+    if (qs[0] == '?') qs = qs.substring(1);
+    var lat = null;
+    var lon = null;
+    var title = null;
+
+    var bits = qs.split('&');
+    var lat_re = /^lat=[0-9.-]+$/;
+    var lon_re = /^lon=[0-9.-]+$/;
+    var title_re = /^title=[a-zA-Z0-9 ]+$/;
+
+    for (var i = 0; i < bits.length; i++) {
+        bit = decodeURIComponent(bits[i]);
+        if (lat_re.test(bit)) {
+            lat = Number(bit.split('=')[1]);
+        } else if (lon_re.test(bit)) {
+            lon = Number(bit.split('=')[1]);
+        } else if (title_re.test(bit)) {
+            title = bit.split('=')[1];
+        }
+    }
+    if ((lat == null) || (lon == null)) return;
+
+    return [[lat, lon], title];
 }
 
 function addVillages(data) {
