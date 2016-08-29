@@ -79,7 +79,6 @@ function initMap() {
     map.locate({enableHighAccuracy: true, watch: true})
 
     $.getJSON('https://wiki.emfcamp.org/villages.php', addVillages);
-
     var target = parseTarget(location.search);
     if (target) {
         var latlng = target[0];
@@ -91,6 +90,7 @@ function initMap() {
         popup.openPopup();
     }
 
+    $.getJSON('/test.json', addGeoJSON);
 }
 
 function parseTarget(qs) {
@@ -117,6 +117,32 @@ function parseTarget(qs) {
     if ((lat == null) || (lon == null)) return;
 
     return [[lat, lon], title];
+}
+
+function onGeoJSONFeature(feature, layer) {
+    if (feature.properties && feature.properties.distro_name) {
+        layer.bindPopup("<b>Name:</b> " + feature.properties.distro_name + "<br>" +
+                        "<b>Type:</b> " + feature.properties.power_distro);
+    }
+}
+
+function addGeoJSON(data) {
+    var layer = L.geoJson(data, {
+        style: {
+            color: "#ff0000",
+            weight: 2
+        },
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, {
+                                  radius: 4,
+                                  fillColor: "#ff0000",
+                                  fillOpacity: 1,
+                                  });
+        },
+        onEachFeature: onGeoJSONFeature
+    });
+    layerSwitcher.addOverlay(layer, 'Power (GeoJSON)');
+    //layer.addTo(map);
 }
 
 function addVillages(data) {
@@ -156,7 +182,7 @@ function addVillages(data) {
         })();
     };
     layerSwitcher.addOverlay(layer, 'Villages');
-    layer.addTo(map);
+    //layer.addTo(map);
 }
 
 function updateLocationMarker() {
