@@ -6,7 +6,6 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="/ol.js"></script>
-    <script src="/mapbox-streets-v6-style.js"></script>
     <style>
         html {
             height: 100%;
@@ -25,6 +24,12 @@
   <body>
     <div id="map" class="map"></div>
     <script>
+
+    function isMobile() {
+        try{ document.createEvent("TouchEvent"); return true; }
+        catch(e){ return false; }
+    }
+
       var image = new ol.style.Circle({
         radius: 5,
         fill: null,
@@ -105,19 +110,9 @@
     $(function() {
         map = new ol.Map({
             layers: [
-            new ol.layer.VectorTile({
-                source: new ol.source.VectorTile({
-                  attributions: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> ' +
-                    '© <a href="http://www.openstreetmap.org/copyright">' +
-                    'OpenStreetMap contributors</a>',
-                  format: new ol.format.MVT(),
-                  tileGrid: ol.tilegrid.createXYZ({maxZoom: 22}),
-                  tilePixelRatio: 16,
-                  url: 'https://{a-d}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/' +
-                      '{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1IjoicnVzc3NzIiwiYSI6ImNpdGVzaXphejAwNjAzbnRvYW8zc3AxMWsifQ.E2uDeHpaPq5cySXU_I3cYQ'
-                }),
-                style: createMapboxStreetsV6Style()
-          })
+            new ol.layer.Tile({
+             source: new ol.source.OSM()
+             })
         ],
         target: 'map',
         controls: ol.control.defaults({
@@ -143,8 +138,8 @@
             var vectorLayer = new ol.layer.Vector({
                 source: vectorSource,
                 style: styleFunction,
-                updateWhileAnimating: true,
-                updateWhileInteracting: true
+                updateWhileAnimating: !isMobile(),
+                updateWhileInteracting: !isMobile()
                 });
             map.addLayer(vectorLayer);
         });
