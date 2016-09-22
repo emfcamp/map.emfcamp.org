@@ -90,7 +90,7 @@ function initMap() {
         popup.openPopup();
     }
 
-    $.getJSON('/test.json', addGeoJSON);
+    $.getJSON('/vector_layers.json', addVectorLayers);
 }
 
 function parseTarget(qs) {
@@ -126,7 +126,16 @@ function onGeoJSONFeature(feature, layer) {
     }
 }
 
-function addGeoJSON(data) {
+function addVectorLayers(layer_data) {
+    console.log(layer_data);
+    $.each(layer_data, function(index, layer) {
+        $.getJSON(layer.source, function(data) {
+            addGeoJSON(data, layer.name);
+        });
+    });
+}
+
+function addGeoJSON(data, name) {
     var layer = L.geoJson(data, {
         style: {
             color: "#ff0000",
@@ -138,11 +147,10 @@ function addGeoJSON(data) {
                                   fillColor: "#ff0000",
                                   fillOpacity: 1,
                                   });
-        },
-        onEachFeature: onGeoJSONFeature
+        }
+        //onEachFeature: onGeoJSONFeature
     });
-    layerSwitcher.addOverlay(layer, 'Power (GeoJSON)');
-    //layer.addTo(map);
+    layerSwitcher.addOverlay(layer, name + " (vector)");
 }
 
 function addVillages(data) {
