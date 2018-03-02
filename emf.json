@@ -2275,17 +2275,6 @@
       }
     },
     {
-      "id": "buildings",
-      "type": "fill-extrusion",
-      "source": "site_plan",
-      "source-layer": "buildings",
-      "layout": {},
-      "paint": {
-        "fill-extrusion-color": "rgba(189, 170, 85, 1)",
-        "fill-extrusion-height": 4
-      }
-    },
-    {
       "id": "structures",
       "type": "line",
       "source": "site_plan",
@@ -2344,6 +2333,17 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "buildings",
+      "type": "fill-extrusion",
+      "source": "site_plan",
+      "source-layer": "buildings",
+      "layout": {},
+      "paint": {
+        "fill-extrusion-color": "rgba(189, 170, 85, 1)",
+        "fill-extrusion-height": 4
       }
     },
     {
