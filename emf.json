@@ -45,7 +45,7 @@
       "id": "background",
       "type": "background",
       "paint": {
-        "background-color": "rgba(255, 251, 251, 0.21)"
+        "background-color": "rgba(255, 255, 255, 1)"
       }
     },
     {
@@ -1358,53 +1358,6 @@
       }
     },
     {
-      "id": "highway_name_other",
-      "type": "symbol",
-      "metadata": {
-        "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
-      },
-      "source": "openmaptiles",
-      "source-layer": "transportation_name",
-      "filter": [
-        "all",
-        [
-          "!=",
-          "class",
-          "motorway"
-        ],
-        [
-          "==",
-          "$type",
-          "LineString"
-        ]
-      ],
-      "layout": {
-        "text-size": 10,
-        "text-max-angle": 30,
-        "text-transform": "uppercase",
-        "symbol-spacing": 350,
-        "text-font": [
-          "Metropolis Regular",
-          "Noto Sans Regular"
-        ],
-        "symbol-placement": "line",
-        "visibility": "visible",
-        "text-rotation-alignment": "map",
-        "text-pitch-alignment": "viewport",
-        "text-field": "{name:latin} {name:nonlatin}"
-      },
-      "paint": {
-        "text-color": "#bbb",
-        "text-halo-color": "#fff",
-        "text-translate": [
-          0,
-          0
-        ],
-        "text-halo-width": 2,
-        "text-halo-blur": 1
-      }
-    },
-    {
       "id": "highway_name_motorway",
       "type": "symbol",
       "metadata": {
@@ -2253,6 +2206,16 @@
       }
     },
     {
+      "id": "hedges",
+      "type": "fill",
+      "source": "site_plan",
+      "source-layer": "natural_hedges",
+      "layout": {},
+      "paint": {
+        "fill-color": "rgba(172, 210, 170, 1)"
+      }
+    },
+    {
       "id": "water_linestring",
       "type": "line",
       "source": "site_plan",
@@ -2277,8 +2240,34 @@
       "type": "line",
       "source": "site_plan",
       "source-layer": "license_boundary",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
       "paint": {
-        "line-color": "rgba(255, 0, 0, 1)"
+        "line-color": "rgba(255, 0, 0, 1)",
+        "line-dasharray": [
+          10,
+          3
+        ]
+      }
+    },
+    {
+      "id": "heras",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "heras_internal",
+      "paint": {
+        "line-color": "rgba(148, 63, 63, 1)"
+      }
+    },
+    {
+      "id": "buildings",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "buildings",
+      "paint": {
+        "line-color": "rgba(156, 92, 14, 1)"
       }
     },
     {
@@ -2288,7 +2277,7 @@
       "source-layer": "structures"
     },
     {
-      "id": "tracks",
+      "id": "paths_tracks",
       "type": "fill",
       "source": "site_plan",
       "source-layer": "roads",
@@ -2298,26 +2287,90 @@
       }
     },
     {
+      "id": "paths_fire",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "fire_paths",
+      "paint": {
+        "line-color": "rgba(193, 189, 170, 1)"
+      }
+    },
+    {
+      "id": "paths_trackway",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "temporary_trackway",
+      "paint": {
+        "line-color": "rgba(121, 121, 121, 1)"
+      }
+    },
+    {
       "id": "trees",
       "type": "circle",
       "source": "site_plan",
       "source-layer": "natural_trees",
-      "minzoom": 0,
+      "minzoom": 13,
+      "maxzoom": 0,
       "layout": {},
       "paint": {
-        "circle-color": "rgba(44, 162, 83, 1)",
+        "circle-color": "rgba(128, 179, 137, 1)",
+        "circle-stroke-color": "rgba(114, 140, 118, 1)",
+        "circle-stroke-width": 2,
         "circle-radius": {
           "stops": [
             [
-              15,
+              13,
               1
             ],
             [
-              20,
-              8
+              18,
+              3
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "labels_gate",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "labels_gate_labels",
+      "minzoom": 16,
+      "maxzoom": 24,
+      "layout": {
+        "text-field": "{text}",
+        "text-size": 12,
+        "text-optional": false,
+        "text-font": [
+          "Open Sans Regular",
+          "Arial Unicode MS Regular"
+        ],
+        "text-keep-upright": true,
+        "text-ignore-placement": false,
+        "text-allow-overlap": false
+      },
+      "paint": {
+        "text-halo-color": "rgba(241, 241, 241, 0.8)",
+        "text-halo-width": 2,
+        "text-color": "rgba(0, 0, 0, 1)"
+      }
+    },
+    {
+      "id": "labels_main",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "labels",
+      "minzoom": 16,
+      "maxzoom": 24,
+      "layout": {
+        "text-field": "{text}",
+        "text-size": 12,
+        "text-optional": false
+      },
+      "paint": {
+        "text-halo-color": "rgba(241, 241, 241, 0.8)",
+        "text-halo-width": 2,
+        "text-color": "rgba(0, 0, 0, 1)"
       }
     }
   ],
