@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "name": "Positron",
+  "name": "EMF",
   "metadata": {
     "mapbox:autocomposite": false,
     "mapbox:type": "template",
@@ -2276,11 +2276,13 @@
     },
     {
       "id": "buildings",
-      "type": "line",
+      "type": "fill-extrusion",
       "source": "site_plan",
       "source-layer": "buildings",
+      "layout": {},
       "paint": {
-        "line-color": "rgba(156, 92, 14, 1)"
+        "fill-extrusion-color": "rgba(189, 170, 85, 1)",
+        "fill-extrusion-height": 4
       }
     },
     {
@@ -2296,7 +2298,8 @@
       "source-layer": "roads",
       "minzoom": 0,
       "paint": {
-        "fill-color": "rgba(177, 165, 147, 1)"
+        "fill-color": "rgba(177, 165, 147, 1)",
+        "fill-outline-color": "rgba(98, 98, 97, 1)"
       }
     },
     {
@@ -2387,5 +2390,6 @@
       }
     }
   ],
-  "id": "positron"
+  "id": "positron",
+  "owner": ""
 }
