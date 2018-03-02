@@ -233,9 +233,12 @@
       "source": "openmaptiles",
       "source-layer": "waterway",
       "filter": [
-        "==",
-        "$type",
-        "LineString"
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ]
       ],
       "layout": {
         "visibility": "visible"
@@ -2206,7 +2209,17 @@
       }
     },
     {
-      "id": "hedges",
+      "id": "natural_woodland",
+      "type": "fill",
+      "source": "site_plan",
+      "source-layer": "natural_woodland",
+      "layout": {},
+      "paint": {
+        "fill-color": "rgba(172, 210, 170, 1)"
+      }
+    },
+    {
+      "id": "natural_hedges",
       "type": "fill",
       "source": "site_plan",
       "source-layer": "natural_hedges",
@@ -2221,7 +2234,7 @@
       "source": "site_plan",
       "source-layer": "natural_water_linestring",
       "paint": {
-        "line-color": "rgba(54, 48, 183, 1)"
+        "line-color": "rgba(45, 45, 181, 0.51)"
       }
     },
     {
