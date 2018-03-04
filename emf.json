@@ -2118,6 +2118,24 @@
       }
     },
     {
+      "id": "areas_backstage",
+      "type": "fill",
+      "source": "site_plan",
+      "source-layer": "areas_backstage",
+      "paint": {
+        "fill-color": "rgba(232, 225, 225, 1)"
+      }
+    },
+    {
+      "id": "areas_camping",
+      "type": "fill",
+      "source": "site_plan",
+      "source-layer": "areas_camping",
+      "paint": {
+        "fill-color": "rgba(227, 245, 227, 1)"
+      }
+    },
+    {
       "id": "natural_woodland",
       "type": "fill",
       "source": "site_plan",
@@ -2219,10 +2237,41 @@
       }
     },
     {
+      "id": "paths_fire",
+      "type": "fill",
+      "source": "site_plan",
+      "source-layer": "paths_fire",
+      "paint": {
+        "fill-color": "rgba(221, 226, 203, 1)"
+      },
+      "layout": {}
+    },
+    {
+      "id": "paths_trackway_case",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "paths_trackway",
+      "paint": {
+        "line-width": 3,
+        "line-color": "rgba(140, 140, 140, 1)"
+      },
+      "layout": {}
+    },
+    {
+      "id": "paths_trackway",
+      "type": "fill",
+      "source": "site_plan",
+      "source-layer": "paths_trackway",
+      "paint": {
+        "fill-color": "rgba(185, 185, 185, 1)"
+      },
+      "layout": {}
+    },
+    {
       "id": "paths_tracks_case",
       "type": "line",
       "source": "site_plan",
-      "source-layer": "roads",
+      "source-layer": "paths_roads",
       "minzoom": 0,
       "paint": {
         "line-width": {
@@ -2249,29 +2298,11 @@
       "id": "paths_tracks",
       "type": "fill",
       "source": "site_plan",
-      "source-layer": "roads",
+      "source-layer": "paths_roads",
       "minzoom": 0,
       "paint": {
         "fill-color": "rgba(177, 165, 147, 1)",
         "fill-outline-color": "rgba(98, 98, 97, 0)"
-      }
-    },
-    {
-      "id": "paths_fire",
-      "type": "line",
-      "source": "site_plan",
-      "source-layer": "fire_paths",
-      "paint": {
-        "line-color": "rgba(193, 189, 170, 1)"
-      }
-    },
-    {
-      "id": "paths_trackway",
-      "type": "line",
-      "source": "site_plan",
-      "source-layer": "temporary_trackway",
-      "paint": {
-        "line-color": "rgba(121, 121, 121, 1)"
       }
     },
     {
