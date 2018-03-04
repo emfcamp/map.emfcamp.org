@@ -2370,6 +2370,40 @@
       }
     },
     {
+      "id": "services_bt_ducts",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "services_bt_ducts",
+      "paint": {
+        "line-color": "rgba(187, 0, 218, 1)",
+        "line-width": 2
+      },
+      "layout": {}
+    },
+    {
+      "id": "services_water_lines",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "services_water_lines",
+      "paint": {
+        "line-color": "#00C5FF",
+        "line-width": 2
+      },
+      "layout": {}
+    },
+    {
+      "id": "services_water_points",
+      "type": "circle",
+      "source": "site_plan",
+      "source-layer": "services_water_points",
+      "paint": {
+        "circle-color": "rgba(0, 197, 255, 1)",
+        "circle-stroke-color": "rgba(22, 0, 195, 1)",
+        "circle-stroke-width": 2,
+        "circle-radius": 3
+      }
+    },
+    {
       "id": "license_boundary",
       "type": "line",
       "source": "site_plan",

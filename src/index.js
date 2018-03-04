@@ -1,5 +1,7 @@
-import mapboxgl from 'mapbox-gl';
-import map_style from './map_style.json';
+import './index.css'
+import mapboxgl from 'mapbox-gl'
+import map_style from './map_style.json'
+import LayerSwitcher from './layerswitcher.js'
 
 mapboxgl.accessToken = 'undefined';
 
@@ -19,6 +21,12 @@ map.addControl(new mapboxgl.GeolocateControl({
 }));
 
 map.addControl(new mapboxgl.ScaleControl({
-    maxWidth: 120,
+    maxWidth: 200,
     unit: 'metric'
 }));
+
+
+var layers = {
+    'Buried Services': 'services_'
+}
+map.addControl(new LayerSwitcher(layers), 'top-right');
