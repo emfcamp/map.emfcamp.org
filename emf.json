@@ -2226,6 +2226,33 @@
       }
     },
     {
+      "id": "paths_tracks_case",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "roads",
+      "minzoom": 0,
+      "paint": {
+        "line-width": {
+          "stops": [
+            [
+              12,
+              0
+            ],
+            [
+              17,
+              5
+            ]
+          ]
+        },
+        "line-color": "rgba(132, 131, 131, 1)",
+        "line-blur": 0.5
+      },
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      }
+    },
+    {
       "id": "paths_tracks",
       "type": "fill",
       "source": "site_plan",
@@ -2288,7 +2315,8 @@
               3
             ]
           ]
-        }
+        },
+        "circle-blur": 0
       }
     },
     {
