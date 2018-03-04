@@ -1,6 +1,2 @@
-config.json
-csv
-csv-old
-kml
-kml-old
-export.html
+node_modules
+dist/bundle.js
