@@ -2168,35 +2168,6 @@
       }
     },
     {
-      "id": "water_polygon_shadow",
-      "type": "fill",
-      "source": "site_plan",
-      "source-layer": "natural_water_polygon",
-      "layout": {},
-      "paint": {
-        "fill-color": "rgba(92, 103, 146, 1)",
-        "fill-antialias": true,
-        "fill-translate": {
-          "stops": [
-            [
-              14,
-              [
-                0,
-                0
-              ]
-            ],
-            [
-              16,
-              [
-                -1,
-                -1
-              ]
-            ]
-          ]
-        }
-      }
-    },
-    {
       "id": "water_polygon",
       "type": "fill",
       "source": "site_plan",
@@ -2205,6 +2176,28 @@
       "paint": {
         "fill-color": "rgba(78, 131, 199, 1)",
         "fill-antialias": true
+      }
+    },
+    {
+      "id": "water_polygon_shadow",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "natural_water_polygon",
+      "layout": {},
+      "paint": {
+        "line-color": "rgba(102, 102, 183, 1)",
+        "line-width": {
+          "stops": [
+            [
+              13,
+              0
+            ],
+            [
+              18,
+              2
+            ]
+          ]
+        }
       }
     },
     {
