@@ -2282,6 +2282,21 @@
       }
     },
     {
+      "id": "walls",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "walls"
+    },
+    {
+      "id": "fences",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "fences",
+      "paint": {
+        "line-color": "rgba(134, 134, 101, 1)"
+      }
+    },
+    {
       "id": "trees",
       "type": "circle",
       "source": "site_plan",
