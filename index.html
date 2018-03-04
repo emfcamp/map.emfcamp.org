@@ -32,9 +32,12 @@
         font-size: 10px;
      }
 
+     @media (max-height: 750px) {
+        #subtitle { display: none; }
+     }
+
      h1 {
         margin: 0px;
-        margin-bottom: 4px;
         font-size: 20px;
         font-family: 'Raleway', sans-serif;
      }
@@ -56,7 +59,7 @@
     </head>
     <body>
         <header><h1><a href="https://www.emfcamp.org">Electromagnetic Field 2018</a></h1>
-            Eastnor Castle Deer Park, Herefordshire, UK
+            <div id="subtitle">Eastnor Castle Deer Park, Herefordshire, UK</div>
           </header>
           <noscript>You need Javscript enabled to view this map.</noscript>
           <div id="map"></div>
