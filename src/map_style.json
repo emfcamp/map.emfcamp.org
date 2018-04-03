@@ -2404,6 +2404,16 @@
       }
     },
     {
+      "id": "site_water_pipes",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "water_pipes",
+      "paint": {
+        "line-color": "rgba(0, 89, 255, 1)",
+        "line-width": 2
+      }
+    },
+    {
       "id": "license_boundary",
       "type": "line",
       "source": "site_plan",

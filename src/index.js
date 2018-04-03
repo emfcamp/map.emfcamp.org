@@ -27,6 +27,7 @@ map.addControl(new mapboxgl.ScaleControl({
 
 
 var layers = {
-    'Buried Services': 'services_'
+    'Buried Services': 'services_',
+    'Water': 'site_water_'
 }
 map.addControl(new LayerSwitcher(layers), 'top-right');
