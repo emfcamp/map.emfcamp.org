@@ -2443,6 +2443,24 @@
       }
     },
     {
+      "id": "noc_dk_radius",
+      "type": "fill",
+      "source": "site_plan",
+      "source-layer": "noc_dk_radius",
+      "paint": {
+        "fill-color": "rgba(169, 105, 163, 1)",
+        "fill-opacity": 0.3
+      }
+    },
+    {
+      "id": "noc_dk",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "noc_dk",
+      "paint": {},
+      "layout": {}
+    },
+    {
       "id": "labels_gate",
       "type": "symbol",
       "source": "site_plan",
@@ -2484,6 +2502,29 @@
         "text-halo-width": 3,
         "text-color": "rgba(0, 0, 0, 1)"
       }
+    },
+    {
+      "id": "labels_camping",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "areas_camping",
+      "layout": {
+        "text-field": "Camping: {camping}",
+        "text-justify": "center",
+        "text-size": 13,
+        "text-padding": 2,
+        "symbol-placement": "point",
+        "symbol-spacing": 1000,
+        "symbol-avoid-edges": true,
+        "text-max-width": 8
+      },
+      "paint": {
+        "text-halo-width": 3,
+        "text-halo-blur": 1,
+        "text-halo-color": "rgba(255, 255, 255, 0.29)"
+      },
+      "minzoom": 16,
+      "maxzoom": 24
     }
   ],
   "id": "positron",
