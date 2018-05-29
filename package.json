@@ -1,7 +1,7 @@
 {
   "name": "map.emfcamp.org",
   "version": "1.0.0",
-  "description": "",
+  "description": "EMF map website",
   "main": "map.js",
   "repository": {
     "type": "git",
@@ -19,17 +19,17 @@
   },
   "homepage": "https://github.com/emfcamp/map.emfcamp.org#readme",
   "devDependencies": {
-    "clean-webpack-plugin": "^0.1.18",
-    "css-loader": "^0.28.10",
-    "style-loader": "^0.20.2",
-    "uglifyjs-webpack-plugin": "^1.2.2",
-    "webpack": "^4.1.0",
-    "webpack-cli": "^2.0.10",
-    "webpack-dev-server": "^3.1.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "style-loader": "^0.20.3",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.10.1",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
-    "mapbox-gl": "^0.44.1",
-    "redom": "^3.11.1"
+    "mapbox-gl": "^0.44.2",
+    "redom": "^3.12.3"
   }
 }
