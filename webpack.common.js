@@ -16,6 +16,7 @@ module.exports = {
            'css-loader'
          ]
        }
-    ]
+        ],
+        noParse: /(mapbox-gl)\.js$/
     }
 };
