@@ -2370,15 +2370,108 @@
       }
     },
     {
-      "id": "services_bt_ducts",
+      "id": "services_comms_ducts_case",
       "type": "line",
       "source": "site_plan",
-      "source-layer": "services_bt_ducts",
+      "source-layer": "services_comms_ducts",
+      "paint": {
+        "line-color": "rgba(150, 150, 150, 1)",
+        "line-width": 3
+      },
+      "layout": {}
+    },
+    {
+      "id": "services_comms_ducts",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "services_comms_ducts",
       "paint": {
         "line-color": "rgba(187, 0, 218, 1)",
         "line-width": 2
       },
       "layout": {}
+    },
+    {
+      "id": "services_comms_lines",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "services_comms_buried_lines",
+      "paint": {
+        "line-color": "rgba(187, 0, 218, 1)",
+        "line-width": 2
+      },
+      "layout": {}
+    },
+    {
+      "id": "services_comms_manholes-copy-copy-copy",
+      "type": "circle",
+      "source": "site_plan",
+      "source-layer": "services_comms_manholes",
+      "paint": {
+        "circle-color": "rgba(187, 0, 218, 1)",
+        "circle-stroke-width": 1
+      },
+      "minzoom": 15
+    },
+    {
+      "id": "services_comms_bt_poles",
+      "type": "circle",
+      "source": "site_plan",
+      "source-layer": "services_comms_bt_poles",
+      "paint": {
+        "circle-color": "rgba(136, 89, 6, 1)",
+        "circle-stroke-width": 1
+      },
+      "minzoom": 15
+    },
+    {
+      "id": "services_comms_cabinets",
+      "type": "circle",
+      "source": "site_plan",
+      "source-layer": "services_comms_cabinets",
+      "paint": {
+        "circle-color": "rgba(218, 0, 62, 1)",
+        "circle-stroke-width": 1
+      },
+      "minzoom": 15
+    },
+    {
+      "id": "services_comms_manholes_label-copy",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "services_comms_manholes",
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 2
+      },
+      "minzoom": 15,
+      "layout": {
+        "text-field": "{id}",
+        "text-size": 14,
+        "text-offset": [
+          -1,
+          0
+        ]
+      }
+    },
+    {
+      "id": "services_comms_cabinets_label",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "services_comms_cabinets",
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 2
+      },
+      "minzoom": 15,
+      "layout": {
+        "text-field": "{name}",
+        "text-size": 12,
+        "text-offset": [
+          -2,
+          0
+        ]
+      }
     },
     {
       "id": "services_water_lines",
