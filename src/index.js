@@ -2,6 +2,7 @@ import './index.css'
 import mapboxgl from 'mapbox-gl'
 import map_style from './map_style.json'
 import LayerSwitcher from './layerswitcher.js'
+import DistanceMeasure from './distancemeasure.js'
 
 mapboxgl.accessToken = 'undefined';
 
@@ -25,6 +26,7 @@ map.addControl(new mapboxgl.ScaleControl({
     unit: 'metric'
 }));
 
+map.addControl(new DistanceMeasure(), 'top-right');
 
 var layers = {
     'Buried Services': 'services_',
