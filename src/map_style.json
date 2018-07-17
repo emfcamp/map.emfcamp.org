@@ -2536,7 +2536,7 @@
       }
     },
     {
-      "id": "noc_dk_radius",
+      "id": "dk_radius",
       "type": "fill",
       "source": "site_plan",
       "source-layer": "noc_dk_radius",
@@ -2546,12 +2546,161 @@
       }
     },
     {
-      "id": "noc_dk",
+      "id": "dk",
       "type": "line",
       "source": "site_plan",
       "source-layer": "noc_dk",
       "paint": {},
       "layout": {}
+    },
+    {
+      "id": "dk_names",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "noc_dk_names",
+      "minzoom": 16,
+      "maxzoom": 24,
+      "layout": {
+        "symbol-placement": "point",
+        "text-field": "{text}",
+        "text-justify": "center",
+        "text-size": 14,
+        "text-padding": 2,
+        "symbol-avoid-edges": true,
+        "text-max-width": 8
+      },
+      "paint": {
+        "text-halo-color": "rgba(241, 241, 241, 0.8)",
+        "text-halo-width": 3,
+        "text-color": "rgba(169, 105, 163, 1)"
+      }
+    },
+    {
+      "id": "noc_fiber",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "noc_fibre",
+      "paint": {
+        "line-opacity": 1,
+        "line-color": "rgba(147, 84, 150, 1)",
+        "line-width": 2
+      }
+    },
+    {
+      "id": "noc_fiber_labels",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "noc_fibre",
+      "minzoom": 16,
+      "maxzoom": 24,
+      "layout": {
+        "symbol-placement": "line",
+        "text-field": "Fiber ({length}m)",
+        "text-size": 12,
+        "text-optional": false,
+        "text-font": [
+          "Open Sans Regular",
+          "Arial Unicode MS Regular"
+        ],
+        "text-keep-upright": true,
+        "text-allow-overlap": false,
+        "text-offset": [
+          0,
+          -1
+        ]
+      },
+      "paint": {
+        "text-halo-color": "rgba(241, 241, 241, 0.8)",
+        "text-halo-width": 3,
+        "text-color": "rgba(147, 84, 150, 1)"
+      }
+    },
+    {
+      "id": "noc_coper",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "noc_copper_linestring",
+      "minzoom": 0,
+      "paint": {
+        "line-opacity": 1,
+        "line-color": "rgba(174, 127, 176, 1)",
+        "line-width": 2
+      }
+    },
+    {
+      "id": "noc_coper_labels",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "noc_copper_linestring",
+      "minzoom": 16,
+      "maxzoom": 24,
+      "layout": {
+        "symbol-placement": "line",
+        "text-field": "Cat5e ({length}m)",
+        "text-size": 12,
+        "text-optional": false,
+        "text-font": [
+          "Open Sans Regular",
+          "Arial Unicode MS Regular"
+        ],
+        "text-keep-upright": true,
+        "text-allow-overlap": false,
+        "text-offset": [
+          0,
+          -1
+        ]
+      },
+      "paint": {
+        "text-halo-color": "rgba(241, 241, 241, 0.8)",
+        "text-halo-width": 3,
+        "text-color": "rgba(174, 127, 176, 1)"
+      }
+    },
+    {
+      "id": "noc_switch",
+      "type": "circle",
+      "source": "site_plan",
+      "source-layer": "noc_switch_point",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "layout": {},
+      "paint": {
+        "circle-color": "rgba(75, 0, 130, 1)",
+        "circle-radius": 3
+      }
+    },
+    {
+      "id": "noc_switch_labels",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "noc_switch_point",
+      "minzoom": 19,
+      "maxzoom": 24,
+      "layout": {
+        "symbol-placement": "point",
+        "symbol-spacing": 1000,
+        "symbol-avoid-edges": true,
+        "text-field": "{switch}",
+        "text-size": 12,
+        "text-optional": false,
+        "text-font": [
+          "Open Sans Regular",
+          "Arial Unicode MS Regular"
+        ],
+        "text-keep-upright": true,
+        "text-allow-overlap": false,
+        "text-anchor": "right",
+        "text-offset": [
+          -1,
+          0
+        ],
+        "text-justify": "right"
+      },
+      "paint": {
+        "text-halo-color": "rgba(241, 241, 241, 0.8)",
+        "text-halo-width": 3,
+        "text-color": "rgba(75, 0, 130, 1)"
+      }
     },
     {
       "id": "power_generator",

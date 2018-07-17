@@ -31,6 +31,7 @@ map.addControl(new DistanceMeasure(), 'top-right');
 var layers = {
     'Buried Services': 'services_',
     'Water': 'site_water_',
+    'NOC-DK': 'dk_',
     'NOC': 'noc_',
     'Power': 'power_',
     'Lighting': 'lighting_'
