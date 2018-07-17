@@ -32,6 +32,7 @@ var layers = {
     'Buried Services': 'services_',
     'Water': 'site_water_',
     'NOC': 'noc_',
-    'Power': 'power_'
+    'Power': 'power_',
+    'Lighting': 'lighting_'
 }
 map.addControl(new LayerSwitcher(layers), 'top-right');

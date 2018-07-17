@@ -2858,6 +2858,46 @@
       }
     },
     {
+      "id": "lighting_festoon",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "lighting_festoon",
+      "paint": {
+        "line-color": "rgba(200, 184, 42, 1)",
+        "line-width": 2
+      },
+      "layout": {}
+    },
+    {
+      "id": "lighting_festoon_labels",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "lighting_festoon",
+      "minzoom": 19,
+      "maxzoom": 24,
+      "layout": {
+        "symbol-placement": "line",
+        "text-field": "Festoon ({length}m)",
+        "text-size": 12,
+        "text-optional": false,
+        "text-font": [
+          "Open Sans Regular",
+          "Arial Unicode MS Regular"
+        ],
+        "text-keep-upright": true,
+        "text-allow-overlap": false,
+        "text-offset": [
+            0,
+            -1
+        ]
+      },
+      "paint": {
+        "text-halo-color": "rgba(241, 241, 241, 0.8)",
+        "text-halo-width": 3,
+        "text-color": "rgba(200, 184, 42, 1)"
+      }
+    },
+    {
       "id": "labels_gate",
       "type": "symbol",
       "source": "site_plan",
