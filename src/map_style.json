@@ -2228,10 +2228,41 @@
       }
     },
     {
-      "id": "structures",
+      "id": "structures_polygon",
       "type": "line",
       "source": "site_plan",
-      "source-layer": "structures",
+      "source-layer": "structures_polygon",
+      "minzoom": 0,
+      "paint": {
+        "line-color": "rgba(90, 81, 31, 1)"
+      }
+    },
+    {
+      "id": "structures_linestring",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "structures_linestring",
+      "minzoom": 0,
+      "paint": {
+        "line-color": "rgba(90, 81, 31, 1)"
+      }
+    },
+    {
+      "id": "structures_internal_linestring-copy",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "structures_internal_linestring",
+      "minzoom": 0,
+      "paint": {
+        "line-color": "rgba(90, 81, 31, 1)"
+      }
+    },
+    {
+      "id": "structures_internal_polygon",
+      "type": "line",
+      "source": "site_plan",
+      "source-layer": "structures_internal_polygon",
+      "minzoom": 0,
       "paint": {
         "line-color": "rgba(90, 81, 31, 1)"
       }
@@ -2241,31 +2272,31 @@
       "type": "fill",
       "source": "site_plan",
       "source-layer": "paths_fire",
+      "layout": {},
       "paint": {
         "fill-color": "rgba(221, 226, 203, 1)"
-      },
-      "layout": {}
+      }
     },
     {
       "id": "paths_trackway_case",
       "type": "line",
       "source": "site_plan",
       "source-layer": "paths_trackway",
+      "layout": {},
       "paint": {
         "line-width": 3,
         "line-color": "rgba(140, 140, 140, 1)"
-      },
-      "layout": {}
+      }
     },
     {
       "id": "paths_trackway",
       "type": "fill",
       "source": "site_plan",
       "source-layer": "paths_trackway",
+      "layout": {},
       "paint": {
         "fill-color": "rgba(185, 185, 185, 1)"
-      },
-      "layout": {}
+      }
     },
     {
       "id": "paths_tracks_case",
@@ -2273,6 +2304,10 @@
       "source": "site_plan",
       "source-layer": "paths_roads",
       "minzoom": 0,
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
       "paint": {
         "line-width": {
           "stops": [
@@ -2288,10 +2323,6 @@
         },
         "line-color": "rgba(132, 131, 131, 1)",
         "line-blur": 0.5
-      },
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round"
       }
     },
     {
@@ -2374,76 +2405,72 @@
       "type": "line",
       "source": "site_plan",
       "source-layer": "services_comms_ducts",
+      "layout": {},
       "paint": {
         "line-color": "rgba(150, 150, 150, 1)",
         "line-width": 3
-      },
-      "layout": {}
+      }
     },
     {
       "id": "services_comms_ducts",
       "type": "line",
       "source": "site_plan",
       "source-layer": "services_comms_ducts",
+      "layout": {},
       "paint": {
         "line-color": "rgba(187, 0, 218, 1)",
         "line-width": 2
-      },
-      "layout": {}
+      }
     },
     {
       "id": "services_comms_lines",
       "type": "line",
       "source": "site_plan",
       "source-layer": "services_comms_buried_lines",
+      "layout": {},
       "paint": {
         "line-color": "rgba(187, 0, 218, 1)",
         "line-width": 2
-      },
-      "layout": {}
+      }
     },
     {
       "id": "services_comms_manholes-copy-copy-copy",
       "type": "circle",
       "source": "site_plan",
       "source-layer": "services_comms_manholes",
+      "minzoom": 15,
       "paint": {
         "circle-color": "rgba(187, 0, 218, 1)",
         "circle-stroke-width": 1
-      },
-      "minzoom": 15
+      }
     },
     {
       "id": "services_comms_bt_poles",
       "type": "circle",
       "source": "site_plan",
       "source-layer": "services_comms_bt_poles",
+      "minzoom": 15,
       "paint": {
         "circle-color": "rgba(136, 89, 6, 1)",
         "circle-stroke-width": 1
-      },
-      "minzoom": 15
+      }
     },
     {
       "id": "services_comms_cabinets",
       "type": "circle",
       "source": "site_plan",
       "source-layer": "services_comms_cabinets",
+      "minzoom": 15,
       "paint": {
         "circle-color": "rgba(218, 0, 62, 1)",
         "circle-stroke-width": 1
-      },
-      "minzoom": 15
+      }
     },
     {
       "id": "services_comms_manholes_label-copy",
       "type": "symbol",
       "source": "site_plan",
       "source-layer": "services_comms_manholes",
-      "paint": {
-        "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-halo-width": 2
-      },
       "minzoom": 15,
       "layout": {
         "text-field": "{id}",
@@ -2452,6 +2479,10 @@
           -1,
           0
         ]
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 2
       }
     },
     {
@@ -2459,10 +2490,6 @@
       "type": "symbol",
       "source": "site_plan",
       "source-layer": "services_comms_cabinets",
-      "paint": {
-        "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-halo-width": 2
-      },
       "minzoom": 15,
       "layout": {
         "text-field": "{name}",
@@ -2471,6 +2498,10 @@
           -2,
           0
         ]
+      },
+      "paint": {
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 2
       }
     },
     {
@@ -2478,11 +2509,11 @@
       "type": "line",
       "source": "site_plan",
       "source-layer": "services_water_lines",
+      "layout": {},
       "paint": {
         "line-color": "#00C5FF",
         "line-width": 2
-      },
-      "layout": {}
+      }
     },
     {
       "id": "services_water_points",
@@ -2550,8 +2581,8 @@
       "type": "line",
       "source": "site_plan",
       "source-layer": "noc_dk",
-      "paint": {},
-      "layout": {}
+      "layout": {},
+      "paint": {}
     },
     {
       "id": "dk_names",
@@ -2572,7 +2603,11 @@
       "paint": {
         "text-halo-color": "rgba(241, 241, 241, 0.8)",
         "text-halo-width": 3,
-        "text-color": "rgba(169, 105, 163, 1)"
+        "text-color": "rgba(169, 105, 163, 1)",
+        "text-translate": [
+          -4,
+          0
+        ]
       }
     },
     {
@@ -2616,10 +2651,10 @@
       }
     },
     {
-      "id": "noc_coper",
+      "id": "noc_copper",
       "type": "line",
       "source": "site_plan",
-      "source-layer": "noc_copper_linestring",
+      "source-layer": "noc_copper",
       "minzoom": 0,
       "paint": {
         "line-opacity": 1,
@@ -2628,10 +2663,10 @@
       }
     },
     {
-      "id": "noc_coper_labels",
+      "id": "noc_copper_labels",
       "type": "symbol",
       "source": "site_plan",
-      "source-layer": "noc_copper_linestring",
+      "source-layer": "noc_copper",
       "minzoom": 16,
       "maxzoom": 24,
       "layout": {
@@ -2707,76 +2742,76 @@
       "type": "line",
       "source": "site_plan",
       "source-layer": "power_generator",
+      "layout": {},
       "paint": {
         "line-color": "magenta"
-      },
-      "layout": {}
+      }
     },
     {
       "id": "power_400_3",
       "type": "line",
       "source": "site_plan",
       "source-layer": "power_400_3",
+      "layout": {},
       "paint": {
         "line-color": "rgba(255, 68, 0, 1)",
         "line-width": 4
-      },
-      "layout": {}
+      }
     },
     {
       "id": "power_125_3",
       "type": "line",
       "source": "site_plan",
       "source-layer": "power_125_3",
+      "layout": {},
       "paint": {
-        "line-color": "rgba(255, 0, 0, 1)",
+        "line-color": "rgba(199, 33, 33, 1)",
         "line-width": 3
-      },
-      "layout": {}
+      }
     },
     {
       "id": "power_63_3",
       "type": "line",
       "source": "site_plan",
       "source-layer": "power_63_3",
+      "layout": {},
       "paint": {
-        "line-color": "rgba(255, 0, 0, 1)",
+        "line-color": "rgba(199, 33, 33, 1)",
         "line-width": 2
-      },
-      "layout": {}
+      }
     },
     {
       "id": "power_32_3",
       "type": "line",
       "source": "site_plan",
       "source-layer": "power_32_3",
+      "layout": {},
       "paint": {
-        "line-color": "rgba(255, 0, 0, 1)",
+        "line-color": "rgba(199, 33, 33, 1)",
         "line-width": 1
-      },
-      "layout": {}
+      }
     },
     {
       "id": "power_32_1",
       "type": "line",
       "source": "site_plan",
       "source-layer": "power_32",
+      "layout": {},
       "paint": {
-        "line-color": "rgba(0, 0, 255, 1)",
+        "line-color": "rgba(11, 11, 214, 1)",
         "line-width": 2
-      },
-      "layout": {}
+      }
     },
     {
       "id": "power_16_1",
       "type": "line",
       "source": "site_plan",
       "source-layer": "power_16",
+      "layout": {},
       "paint": {
-        "line-color": "rgba(0, 0, 255, 1)",
+        "line-color": "rgba(11, 11, 214, 1)",
         "line-width": 1
-      },
-      "layout": {}
+      }
     },
     {
       "id": "power_400_3_labels",
@@ -2797,14 +2832,14 @@
         "text-keep-upright": true,
         "text-allow-overlap": false,
         "text-offset": [
-            0,
-            -1
+          0,
+          -1
         ]
       },
       "paint": {
         "text-halo-color": "rgba(241, 241, 241, 0.8)",
         "text-halo-width": 3,
-        "text-color": "rgba(255, 0, 0, 1)"
+        "text-color": "rgba(199, 33, 33, 1)"
       }
     },
     {
@@ -2826,14 +2861,14 @@
         "text-keep-upright": true,
         "text-allow-overlap": false,
         "text-offset": [
-            0,
-            -1
+          0,
+          -1
         ]
       },
       "paint": {
         "text-halo-color": "rgba(241, 241, 241, 0.8)",
         "text-halo-width": 3,
-        "text-color": "rgba(255, 0, 0, 1)"
+        "text-color": "rgba(199, 33, 33, 1)"
       }
     },
     {
@@ -2855,14 +2890,14 @@
         "text-keep-upright": true,
         "text-allow-overlap": false,
         "text-offset": [
-            0,
-            -1
+          0,
+          -1
         ]
       },
       "paint": {
         "text-halo-color": "rgba(241, 241, 241, 0.8)",
         "text-halo-width": 3,
-        "text-color": "rgba(255, 0, 0, 1)"
+        "text-color": "rgba(199, 33, 33, 1)"
       }
     },
     {
@@ -2884,14 +2919,14 @@
         "text-keep-upright": true,
         "text-allow-overlap": false,
         "text-offset": [
-            0,
-            -1
+          0,
+          -1
         ]
       },
       "paint": {
         "text-halo-color": "rgba(241, 241, 241, 0.8)",
         "text-halo-width": 3,
-        "text-color": "rgba(255, 0, 0, 1)"
+        "text-color": "rgba(199, 33, 33, 1)"
       }
     },
     {
@@ -2913,14 +2948,14 @@
         "text-keep-upright": true,
         "text-allow-overlap": false,
         "text-offset": [
-            0,
-            -1
+          0,
+          -1
         ]
       },
       "paint": {
         "text-halo-color": "rgba(241, 241, 241, 0.8)",
         "text-halo-width": 3,
-        "text-color": "rgba(, 0, 255, 1)"
+        "text-color": "rgba(11, 11, 214, 1)"
       }
     },
     {
@@ -2943,14 +2978,14 @@
         "text-keep-upright": true,
         "text-allow-overlap": false,
         "text-offset": [
-            0,
-            -1
+          0,
+          -1
         ]
       },
       "paint": {
         "text-halo-color": "rgba(241, 241, 241, 0.8)",
         "text-halo-width": 3,
-        "text-color": "rgba(0, 0, 255, 1)"
+        "text-color": "rgba(11, 11, 214, 1)"
       }
     },
     {
@@ -2958,16 +2993,28 @@
       "type": "circle",
       "source": "site_plan",
       "source-layer": "power_distro",
+      "layout": {},
       "paint": {
-        "circle-color": ["match", ["get", "distro"],
-                     "TOB/32", "blue",
-                     "TOB/16", "blue",
-                     "CABIN", "blue",
-                     "ColdRoom", "blue",
-                     "red"],
+        "circle-color": [
+          "match",
+          [
+            "get",
+            "distro"
+          ],
+          "TOB/32",
+          "blue",
+          "TOB/16",
+          "blue",
+          "CABIN",
+          "blue",
+          "ColdRoom",
+          "blue",
+          "SOB",
+          "blue",
+          "rgba(199, 33, 33, 1)"
+        ],
         "circle-radius": 3
-      },
-      "layout": {}
+      }
     },
     {
       "id": "power_distro_labels",
@@ -2991,19 +3038,31 @@
         "text-allow-overlap": false,
         "text-anchor": "left",
         "text-offset": [
-            1,
-            0
+          1,
+          0
         ]
       },
       "paint": {
         "text-halo-color": "rgba(241, 241, 241, 0.8)",
         "text-halo-width": 3,
-        "text-color": ["match", ["get", "distro"],
-                     "TOB/32", "blue",
-                     "TOB/16", "blue",
-                     "CABIN", "blue",
-                     "ColdRoom", "blue",
-                     "red"]
+        "text-color": [
+          "match",
+          [
+            "get",
+            "distro"
+          ],
+          "TOB/32",
+          "blue",
+          "TOB/16",
+          "blue",
+          "CABIN",
+          "blue",
+          "ColdRoom",
+          "blue",
+          "SOB",
+          "blue",
+          "rgba(199, 33, 33, 1)"
+        ]
       }
     },
     {
@@ -3011,11 +3070,11 @@
       "type": "line",
       "source": "site_plan",
       "source-layer": "lighting_festoon",
+      "layout": {},
       "paint": {
         "line-color": "rgba(200, 184, 42, 1)",
         "line-width": 2
-      },
-      "layout": {}
+      }
     },
     {
       "id": "lighting_festoon_labels",
@@ -3036,8 +3095,8 @@
         "text-keep-upright": true,
         "text-allow-overlap": false,
         "text-offset": [
-            0,
-            -1
+          0,
+          -1
         ]
       },
       "paint": {
@@ -3094,6 +3153,8 @@
       "type": "symbol",
       "source": "site_plan",
       "source-layer": "areas_camping",
+      "minzoom": 16,
+      "maxzoom": 24,
       "layout": {
         "text-field": "Camping: {camping}",
         "text-justify": "center",
@@ -3108,9 +3169,7 @@
         "text-halo-width": 3,
         "text-halo-blur": 1,
         "text-halo-color": "rgba(255, 255, 255, 0.29)"
-      },
-      "minzoom": 16,
-      "maxzoom": 24
+      }
     }
   ],
   "id": "positron",
