@@ -2626,7 +2626,7 @@
       "type": "symbol",
       "source": "site_plan",
       "source-layer": "noc_fibre",
-      "minzoom": 16,
+      "minzoom": 19,
       "maxzoom": 24,
       "layout": {
         "symbol-placement": "line",
@@ -2667,7 +2667,7 @@
       "type": "symbol",
       "source": "site_plan",
       "source-layer": "noc_copper",
-      "minzoom": 16,
+      "minzoom": 19,
       "maxzoom": 24,
       "layout": {
         "symbol-placement": "line",
@@ -2695,7 +2695,7 @@
       "id": "noc_switch",
       "type": "circle",
       "source": "site_plan",
-      "source-layer": "noc_switch_point",
+      "source-layer": "noc_switch",
       "minzoom": 0,
       "maxzoom": 24,
       "layout": {},
@@ -2708,7 +2708,7 @@
       "id": "noc_switch_labels",
       "type": "symbol",
       "source": "site_plan",
-      "source-layer": "noc_switch_point",
+      "source-layer": "noc_switch",
       "minzoom": 19,
       "maxzoom": 24,
       "layout": {
