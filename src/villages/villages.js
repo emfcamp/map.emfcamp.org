@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl'
-import { el, text, mount, unmount, setChildren } from 'redom'
+import { el, text, mount, unmount, setChildren, setStyle } from 'redom'
 import './villages.css'
 import { VillageEditor } from './components.js'
 
@@ -8,7 +8,11 @@ class VillagesLayer {
         this._source = source
         this._layer = click_layer
         this._wiki_url = 'https://wiki.emfcamp.org/wiki/';
-        this._api_url = 'https://www.emfcamp.org';
+        if (DEV) {
+            this._api_url = 'http://localhost:5000';
+        } else {
+            this._api_url = 'https://www.emfcamp.org';
+        }
         this.popup = null;
     }
 
@@ -62,18 +66,19 @@ class VillagesLayer {
     }
 
     getUserDetails() {
-        this.fetch('/api/user/current').then(response =>
-            response.json()
-        ).then(json => {
-            this._wrapper.setAttribute('visibility', 'visible');
-            this._user_id = json.id;
+        this.fetch('/api/user/current').then(response => {
+            if (response.status == 200) {
+                setStyle(this._wrapper, 'display', 'block');
+                response.json().then(json => {
+                    this._user_id = json.id;
+                });
+            }
         });
     }
 
     onAdd(map) {
         this._map = map
 
-        this.getUserDetails();
         this.addClickHandlers(map);
 
         var button = el('button');
@@ -81,10 +86,11 @@ class VillagesLayer {
 
         var wrapper = el('div', button,
             {'class': "mapboxgl-ctrl mapboxgl-ctrl-group villages-ctrl",
-                visibility: 'hidden'
+                style: 'display:none'
             });
 
         this._wrapper = wrapper
+        this.getUserDetails();
         return wrapper
     }
 
@@ -136,19 +142,6 @@ class VillagesLayer {
         var d = source._data
         source.setData(null);
         source.setData(d);
-    }
-
-    create(form) {
-        var data = {
-            'name': form.querySelector('#nameField').value,
-            'wiki_page': form.querySelector('#wikiField').value,
-            'location': [
-                form.querySelector('#lngField').value,
-                form.querySelector('#latField').value
-            ]
-        }
-
-        return this.post_data("map/create", data, "PUT")
     }
 
     fetch(endpoint) {

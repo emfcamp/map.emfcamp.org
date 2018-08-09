@@ -7,6 +7,10 @@ import VillagesEditor from './villages/villages.js'
 
 mapboxgl.accessToken = 'undefined';
 
+if (DEV) {
+    map_style['sources']['villages']['data'] = 'http://localhost:5000/api/map';
+}
+
 var map = new mapboxgl.Map({
     container: 'map',
     style: map_style,
