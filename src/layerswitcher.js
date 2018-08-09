@@ -2,9 +2,9 @@ import { el, text } from 'redom'
 import './layerswitcher.css'
 
 class LayerSwitcher {
-    constructor(layers) {
+    constructor(layers, visible = []) {
         this._layers = layers
-        this._visible = []
+        this._visible = visible
         this._container = el('div', {'class': "mapboxgl-ctrl layer-switcher-list"})
         this._container.appendChild(el('h3', 'Layers'))
     }
@@ -50,7 +50,12 @@ class LayerSwitcher {
         var list = el('ul')
         var i = 0
         for (let name in this._layers) {
-            let checkbox = el('input', {type: "checkbox", id: "layer" + i})
+            let checkbox = el('input', {
+                type: "checkbox", 
+                id: "layer" + i,
+                checked: this._visible.includes(name)
+                }
+            )
             let label = el('label', name, {'for': "layer" + i})
 
             checkbox.onchange = e => {

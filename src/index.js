@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl'
 import map_style from './map_style.json'
 import LayerSwitcher from './layerswitcher.js'
 import DistanceMeasure from './distancemeasure.js'
+import VillagesEditor from './villages/villages.js'
 
 mapboxgl.accessToken = 'undefined';
 
@@ -27,6 +28,7 @@ map.addControl(new mapboxgl.ScaleControl({
 }));
 
 map.addControl(new DistanceMeasure(), 'top-right');
+map.addControl(new VillagesEditor('villages', 'villages_symbol'), 'top-right');
 
 var layers = {
     'Buried Services': 'services_',
@@ -34,6 +36,9 @@ var layers = {
     'DKs': 'dk_',
     'NOC-Physical': 'noc_',
     'Power': 'power_',
-    'Lighting': 'lighting_'
+    'Lighting': 'lighting_',
+    'Villages': 'villages_'
 }
-map.addControl(new LayerSwitcher(layers), 'top-right');
+var layers_enabled = ['Villages']
+map.addControl(new LayerSwitcher(layers, layers_enabled), 'top-right');
+
