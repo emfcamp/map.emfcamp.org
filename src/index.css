@@ -1,47 +1,49 @@
 html {
-   width: 100%;
-   height: 100%;
-   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-   color: #333;
+  width: 100%;
+  height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
 }
 body {
-   width: 100%;
-   height: 100%;
-   margin: 0px;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
 }
 header {
-   display: block;
-   position: absolute;
-   top: 0;
-   left: 0;
-   z-index: 2;
-   padding: 4px;
-   padding-top: 2px;
-   background-color: rgba(255, 255, 255, 0.75);
-   border-radius: 0px 0px 4px 0px;
-   font-size: 10px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 4px;
+  padding-top: 2px;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 0px 0px 4px 0px;
+  font-size: 10px;
 }
 
 @media (max-height: 750px) {
-   #subtitle { display: none; }
+  #subtitle {
+    display: none;
+  }
 }
 
 h1 {
-   margin: 0px;
-   font-size: 20px;
-   font-family: 'Raleway', sans-serif;
+  margin: 0px;
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
 }
 h1 a {
-   color: #333;
-   text-decoration: none;
+  color: #333;
+  text-decoration: none;
 }
 
 .mapboxgl-ctrl-attrib {
-   font-size: 10px;
+  font-size: 10px;
 }
 
 #map {
-   width: 100%;
-   height: 100%;
-   background-color: white;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
