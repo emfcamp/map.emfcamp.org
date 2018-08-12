@@ -3110,6 +3110,29 @@
       }
     },
     {
+      "id": "labels_camping",
+      "type": "symbol",
+      "source": "site_plan",
+      "source-layer": "areas_camping",
+      "minzoom": 16,
+      "maxzoom": 24,
+      "layout": {
+        "text-field": "Camping: {camping}",
+        "text-justify": "center",
+        "text-size": 13,
+        "text-padding": 2,
+        "symbol-placement": "point",
+        "symbol-spacing": 1000,
+        "symbol-avoid-edges": true,
+        "text-max-width": 8
+      },
+      "paint": {
+        "text-halo-width": 3,
+        "text-halo-blur": 1,
+        "text-halo-color": "rgba(255, 255, 255, 0.29)"
+      }
+    },
+    {
       "id": "labels_gate",
       "type": "symbol",
       "source": "site_plan",
@@ -3150,29 +3173,6 @@
         "text-halo-color": "rgba(241, 241, 241, 0.8)",
         "text-halo-width": 3,
         "text-color": "rgba(0, 0, 0, 1)"
-      }
-    },
-    {
-      "id": "labels_camping",
-      "type": "symbol",
-      "source": "site_plan",
-      "source-layer": "areas_camping",
-      "minzoom": 16,
-      "maxzoom": 24,
-      "layout": {
-        "text-field": "Camping: {camping}",
-        "text-justify": "center",
-        "text-size": 13,
-        "text-padding": 2,
-        "symbol-placement": "point",
-        "symbol-spacing": 1000,
-        "symbol-avoid-edges": true,
-        "text-max-width": 8
-      },
-      "paint": {
-        "text-halo-width": 3,
-        "text-halo-blur": 1,
-        "text-halo-color": "rgba(255, 255, 255, 0.29)"
       }
     },
     {
