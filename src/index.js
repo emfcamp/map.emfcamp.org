@@ -26,7 +26,6 @@ function init() {
   var layer_switcher = new LayerSwitcher(layers, layers_enabled);
 
   layer_switcher.setInitialVisibility(map_style);
-  console.log(map_style);
 
   var map = new mapboxgl.Map({
     container: 'map',
