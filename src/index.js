@@ -13,6 +13,21 @@ if (DEV) {
 }
 
 function init() {
+  var layers = {
+    'Buried Services': 'services_',
+    Water: 'site_water_',
+    DKs: 'dk_',
+    'NOC-Physical': 'noc_',
+    Power: 'power_',
+    Lighting: 'lighting_',
+    Villages: 'villages_',
+  };
+  var layers_enabled = ['Villages'];
+  var layer_switcher = new LayerSwitcher(layers, layers_enabled);
+
+  layer_switcher.setInitialVisibility(map_style);
+  console.log(map_style);
+
   var map = new mapboxgl.Map({
     container: 'map',
     style: map_style,
@@ -43,17 +58,7 @@ function init() {
     'top-right',
   );
 
-  var layers = {
-    'Buried Services': 'services_',
-    Water: 'site_water_',
-    DKs: 'dk_',
-    'NOC-Physical': 'noc_',
-    Power: 'power_',
-    Lighting: 'lighting_',
-    Villages: 'villages_',
-  };
-  var layers_enabled = ['Villages'];
-  map.addControl(new LayerSwitcher(layers, layers_enabled), 'top-right');
+  map.addControl(layer_switcher, 'top-right');
 
   if ('serviceWorker' in navigator) {
     runtime.register();

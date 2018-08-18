@@ -26,6 +26,27 @@ class LayerSwitcher {
     }
   }
 
+  setInitialVisibility(style) {
+    /** 
+     * Modify a map style before adding to the map to set initial visibility states.
+     * This prevents flash-of-invisible-layers.
+     */
+    for (let layer of style['layers']) {
+      for (let layer_name in this._layers) {
+        let pref = this._layers[layer_name];
+        if (
+          layer['id'].startsWith(pref) &&
+          !this._visible.includes(layer['id'])
+        ) {
+          if (!('layout' in layer)) {
+            layer['layout'] = {};
+          }
+          layer['layout']['visibility'] = 'none';
+        }
+      }
+    }
+  }
+
   onAdd(map) {
     this._map = map;
     if (map.isStyleLoaded()) {
