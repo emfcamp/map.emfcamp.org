@@ -18,11 +18,19 @@
 
 const CACHE_NAME = 'emf-map-1';
 
+const additional_assets = [
+  // We have to add the root here as the webpack serviceworker
+  // plugin doesn't know about it.
+  '/'
+];
+
+const cache_assets = serviceWorkerOption.assets.concat(additional_assets);
+
 self.addEventListener('install', event => {
   caches.delete(CACHE_NAME);
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
-      return cache.addAll(serviceWorkerOption.assets);
+      return cache.addAll(cache_assets);
     }),
   );
   console.log('ServiceWorker installed.');
