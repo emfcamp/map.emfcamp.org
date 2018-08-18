@@ -1,5 +1,5 @@
-@import url('https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css');
 @import url('https://fonts.googleapis.com/css?family=Raleway:700');
+@import "~mapbox-gl/dist/mapbox-gl.css";
 
 html {
   width: 100%;
@@ -26,6 +26,13 @@ header {
   border-right: 1px #ddd solid;
   border-bottom: 1px #ddd solid;
   font-size: 10px;
+}
+
+@media all and (display-mode: standalone) {
+  /* Hide header in PWA mode */
+  header {
+    display: none;
+  }
 }
 
 @media (max-height: 750px) {
