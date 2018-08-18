@@ -32,8 +32,10 @@
   "dependencies": {
     "@turf/length": "^6.0.2",
     "express": "^4.16.3",
+    "html-webpack-plugin": "^3.2.0",
     "mapbox-gl": "^0.45.0",
     "redom": "^3.12.7",
-    "serve-static": "^1.13.2"
+    "serve-static": "^1.13.2",
+    "serviceworker-webpack-plugin": "^1.0.1"
   }
 }

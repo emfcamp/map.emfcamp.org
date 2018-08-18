@@ -68,14 +68,18 @@ class VillagesLayer {
   }
 
   getUserDetails() {
-    this.fetch('/api/user/current').then(response => {
-      if (response.status == 200) {
-        setStyle(this._wrapper, 'display', 'block');
-        response.json().then(json => {
-          this._user_id = json.id;
-        });
-      }
-    });
+    this.fetch('/api/user/current')
+      .then(response => {
+        if (response.status == 200) {
+          setStyle(this._wrapper, 'display', 'block');
+          response.json().then(json => {
+            this._user_id = json.id;
+          });
+        }
+      })
+      .catch(error =>
+        console.log('Network error trying to get user details:', error),
+      );
   }
 
   onAdd(map) {
