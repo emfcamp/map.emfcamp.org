@@ -21,6 +21,7 @@ function init() {
     Power: 'power_',
     Lighting: 'lighting_',
     Villages: 'villages_',
+    GSM: 'gsm_'
   };
   var layers_enabled = ['Villages'];
   var layer_switcher = new LayerSwitcher(layers, layers_enabled);
